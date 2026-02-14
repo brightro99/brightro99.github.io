@@ -10,7 +10,7 @@ favicon        = "img/favicon.png"
 SortBy              = "default"
 
 [footer]
-    since      = 2020
+    since      = 2026
     customText = ""
 
 [dateFormat]
@@ -18,14 +18,15 @@ SortBy              = "default"
     lastUpdated = ":date_full"
 
 [sidebar]
-    emoji    = "🍥"
-    subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    avatar   = "img/avatar.png"
+    emoji    = "⭐️"
+    subtitle = "빛나는 기술로 세상을 잇는 개발자"
+    avatar   = "img/profile.jpg"
 
 [article]
     headingAnchor = false
-    math          = false
+    math          = true
     readingTime   = true
+    toc = true 
 
     [article.license]
         enabled = true
@@ -33,7 +34,6 @@ SortBy              = "default"
 
 [widgets]
     homepage = [
-        { type = "search" },
         { type = "archives", params = { limit = 5 } },
         { type = "categories", params = { limit = 10 } },
         { type = "tag-cloud", params = { limit = 10 } },
