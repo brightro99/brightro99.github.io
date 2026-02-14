@@ -205,6 +205,10 @@
     visibility: hidden;
 }
 
+.left-sidebar .site-description {
+    font-size: 1.4rem !important;
+}
+
 .left-sidebar .site-avatar {
     width: 100% !important;
     height: auto !important;
@@ -267,7 +271,7 @@
     color: var(--body-text-color);
     text-decoration: none;
     margin-bottom: 8px;
-    padding-left: 22px;
+    padding-left: 10px;
     transition: color 0.2s;
 
     &:hover {
@@ -283,7 +287,7 @@
 .sidebar-category-list {
     list-style: none;
     margin: 0;
-    padding: 0 0 0 33px;
+    padding: 0 0 0 21px;
     display: flex;
     flex-direction: column;
     gap: 0;
