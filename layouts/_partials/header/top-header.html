@@ -1,0 +1,42 @@
+<header class="top-header">
+    <div class="top-header-inner">
+        <button class="top-header-menu-toggle" id="top-menu-toggle" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <nav class="top-header-nav" id="top-header-nav">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+                {{- if eq .Name "Search" }}{{ continue }}{{ end -}}
+                {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+                <a href="{{ .URL }}" class="top-header-nav-link{{ if $active }} active{{ end }}">
+                    {{ $icon := default .Pre .Params.Icon }}
+                    {{ with $icon }}
+                        {{ partial "helper/icon" . }}
+                    {{ end }}
+                    <span>{{ .Name }}</span>
+                </a>
+            {{ end }}
+        </nav>
+        {{- $query := first 1 (where .Site.Pages "Layout" "==" "search") -}}
+        {{- if $query -}}
+            {{- $searchPage := index $query 0 -}}
+            <form action="{{ $searchPage.RelPermalink }}" class="top-header-search-form">
+                <input name="keyword" required placeholder="{{ T `search.placeholder` }}" />
+                <button type="submit" aria-label="Search">
+                    {{ partial "helper/icon" "search" }}
+                </button>
+            </form>
+        {{- end -}}
+    </div>
+</header>
+
+<script>
+    document.getElementById('top-menu-toggle').addEventListener('click', function() {
+        document.getElementById('top-header-nav').classList.toggle('show');
+    });
+</script>
